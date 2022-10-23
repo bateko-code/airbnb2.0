@@ -1,9 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-type Props = {};
-
-const Banner = (props: Props) => {
+const Banner = () => {
   return (
     <div className="relative h-[300px] sm:h-[600px] lg:h-[700px] xl:h-[800px] 2xl:h-[900px]">
       <Image

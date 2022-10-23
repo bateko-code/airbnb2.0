@@ -24,14 +24,24 @@ export default function Home({ exploreData, cardsData }: any) {
           {/* Pull some data from a server - API endpoints */}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {exploreData?.map(({ img, location, distance }) => (
-              <SmallCard
-                key={img}
-                img={img}
-                distance={distance}
-                location={location}
-              />
-            ))}
+            {exploreData?.map(
+              ({
+                img,
+                location,
+                distance,
+              }: {
+                img: string;
+                location: string;
+                distance: string;
+              }) => (
+                <SmallCard
+                  key={img}
+                  img={img}
+                  distance={distance}
+                  location={location}
+                />
+              )
+            )}
           </div>
         </section>
         <section>
@@ -39,9 +49,11 @@ export default function Home({ exploreData, cardsData }: any) {
             Live Anywhere
           </h2>
           <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3">
-            {cardsData?.map(({ img, title }) => (
-              <MediumCard key={img} img={img} title={title} />
-            ))}
+            {cardsData?.map(
+              ({ img, title }: { img: string; title: string }) => (
+                <MediumCard key={img} img={img} title={title} />
+              )
+            )}
           </div>
         </section>
 

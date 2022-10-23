@@ -8,9 +8,7 @@ import {
   UserIcon,
 } from "@heroicons/react/solid";
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
   return (
     <header className=" sticky grid grid-cols-3 top-0 p-5 bg-white shadow-md z-50 md:px-10">
       {/* left */}

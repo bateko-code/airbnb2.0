@@ -1,9 +1,17 @@
 import React from "react";
 import Image from "next/image";
 
-type Props = {};
-
-const LargeCard = ({ img, title, description, buttonText }) => {
+const LargeCard = ({
+  img,
+  title,
+  description,
+  buttonText,
+}: {
+  img: string;
+  title: string;
+  description: string;
+  buttonText: string;
+}) => {
   return (
     <section className="relative py-16 cursor-pointer">
       <div className="relative h-96 min-w-[300px]">
