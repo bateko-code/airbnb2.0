@@ -5,22 +5,21 @@ import {
   MenuIcon,
   UserCircleIcon,
   GlobeAltIcon,
-  UserIcon,
   UsersIcon,
 } from "@heroicons/react/solid";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
-import useRouter from "next/router";
+import { useRouter } from "next/router";
 
 const Header = ({ placeholder }: any) => {
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [numberOfGuest, setNumberOfGuest] = useState(1);
-  const router = useRouter;
+  const router = useRouter();
 
-  const handleSelect = ({ ranges }: any) => {
+  const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
   };
