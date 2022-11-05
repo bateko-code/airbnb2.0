@@ -6,6 +6,7 @@ const Banner = () => {
     <div className="relative h-[300px] sm:h-[600px] lg:h-[700px] xl:h-[800px] 2xl:h-[900px]">
       <Image
         src="https://links.papareact.com/0fm"
+        alt="bg father and son "
         layout="fill"
         objectFit="cover"
       />
