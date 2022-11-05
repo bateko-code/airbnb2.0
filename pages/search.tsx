@@ -6,7 +6,7 @@ import format from "date-fns/format";
 import InfoCard from "../components/InfoCard";
 import MapBox from "../components/MapBox";
 
-const Search = ({ searchResults, searchLocation }) => {
+const Search = ({ searchResults, searchLocation }: any) => {
   const router = useRouter();
   console.log(searchResults);
   const { location, startDate, endDate, numberOfGuest } = router.query;

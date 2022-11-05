@@ -19,7 +19,7 @@ const Header = ({ placeholder }: any) => {
   const [numberOfGuest, setNumberOfGuest] = useState(1);
   const router = useRouter();
 
-  const handleSelect = (ranges) => {
+  const handleSelect = (ranges: any) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
   };

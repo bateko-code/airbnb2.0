@@ -5,7 +5,7 @@ import getCenter from "geolib/es/getCenter";
 function MapBox({ searchResults }: any) {
   const [selectedLocation, setSelectedLocation] = useState({});
   // Transform the search results object into the  lat long object required
-  const coordinates = searchResults.map((result) => ({
+  const coordinates = searchResults.map((result: any) => ({
     longitude: result.long,
     latitude: result.lat,
   }));
@@ -35,7 +35,7 @@ function MapBox({ searchResults }: any) {
       {...viewState}
       onMove={(evt) => setViewState(evt.viewState)}
     >
-      {searchResults.map((result) => (
+      {searchResults.map((result: any) => (
         <div key={result.long}>
           <Marker
             longitude={result.long}
