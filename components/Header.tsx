@@ -63,7 +63,9 @@ const Header = ({ placeholder }: any) => {
           onChange={(event) => setSearchInput(event.target.value)}
           className=" flex-grow pl-5 bg-transparent outline-none text-gray-600 placeholder-gray-400"
           type="text"
-          placeholder="Start your  search"
+          placeholder={
+            placeholder || "Search London, New York, Dubai or Paris..."
+          }
         />
         <SearchIcon className=" hidden md:inline-flex h-8 bg-red-400  text-white rounded-full p-2 cursor-pointer md:mx-2" />
       </div>
@@ -93,7 +95,9 @@ const Header = ({ placeholder }: any) => {
 
             <input
               value={numberOfGuest}
-              onChange={(event) => setNumberOfGuest(event.target.value)}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setNumberOfGuest(event.target.value)
+              }
               type="number"
               min={1}
               className="w-12 pl-2 text-lg outline-none text-red-400"
