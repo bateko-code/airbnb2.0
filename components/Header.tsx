@@ -16,7 +16,7 @@ const Header = ({ placeholder }: any) => {
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [numberOfGuest, setNumberOfGuest] = useState(1);
+  const [numberOfGuest, setNumberOfGuest]: any = useState(1);
   const router = useRouter();
 
   const handleSelect = (ranges: any) => {
