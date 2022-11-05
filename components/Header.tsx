@@ -54,6 +54,7 @@ const Header = ({ placeholder }: any) => {
           layout="fill"
           objectPosition="left"
           objectFit="contain"
+          alt="heard image"
         />
       </div>
       {/* middle  Search*/}
