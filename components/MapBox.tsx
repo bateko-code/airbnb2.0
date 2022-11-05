@@ -55,7 +55,7 @@ function MapBox({ searchResults }: any) {
           {selectedLocation.long === result.long ? (
             <Popup
               onClose={() => setSelectedLocation({})}
-              closeOnClick={true}
+              closeOnClick={false}
               latitude={result.lat}
               longitude={result.long}
             >
