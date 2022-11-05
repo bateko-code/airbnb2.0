@@ -50,6 +50,15 @@ const Search = ({ searchResults, searchLocation }: any) => {
                 rating,
                 price,
                 total,
+              }: {
+                img: string;
+                location: string;
+                title: string;
+                description: string;
+                amenities: string;
+                rating: number;
+                price: string;
+                total: string;
               }) => (
                 <InfoCard
                   key={img}
@@ -77,7 +86,7 @@ const Search = ({ searchResults, searchLocation }: any) => {
 
 export default Search;
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   const { location } = context.query;
   let searchLocation = "";
   let searchResults = " ";
