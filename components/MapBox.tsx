@@ -30,7 +30,7 @@ function MapBox({ searchResults }: any) {
   }, [searchResults]);
   return (
     <Map
-      mapStyle="mapbox://styles/tekocode4/cl9wiuqwa009q14p79b26pji5"
+      mapStyle="mapbox://styles/tekocode4/cla3lpk4u003v15nxnkjzy93r"
       mapboxAccessToken={process.env.mapbox_key}
       {...viewState}
       onMove={(evt) => setViewState(evt.viewState)}
