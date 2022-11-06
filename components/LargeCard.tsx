@@ -20,6 +20,7 @@ const LargeCard = ({
           layout="fill"
           objectFit="cover"
           className="rounded-2xl"
+          alt="images"
         />
       </div>
       <div className="absolute top-32 left-12">
