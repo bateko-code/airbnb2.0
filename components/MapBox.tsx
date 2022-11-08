@@ -5,13 +5,21 @@ import getCenter from "geolib/es/getCenter";
 function MapBox({ searchResults }: any) {
   const [selectedLocation, setSelectedLocation]: any = useState({});
   // Transform the search results object into the  lat long object required
-  const coordinates: any = searchResults.map((result: any) => ({
-    longitude: result.long,
-    latitude: result.lat,
-  }));
+  const coordinates: any = searchResults.map(
+    (result: any): { longitude: number; latitude: number } => ({
+      longitude: result.long,
+      latitude: result.lat,
+    })
+  );
   const center = getCenter(coordinates);
-
-  const [viewState, setViewState] = React.useState({
+  interface IViewport {
+    width: string;
+    height: string;
+    latitude: number;
+    longitude: number;
+    zoom: number;
+  }
+  const [viewport, setViewport] = useState<IViewport>({
     width: "100%",
     height: "100%",
     latitude: center.latitude,
@@ -20,7 +28,7 @@ function MapBox({ searchResults }: any) {
   });
 
   useEffect(() => {
-    setViewState({
+    setViewport({
       width: "100%",
       height: "100%",
       latitude: center.latitude,
@@ -32,40 +40,51 @@ function MapBox({ searchResults }: any) {
     <Map
       mapStyle="mapbox://styles/tekocode4/cla3lpk4u003v15nxnkjzy93r"
       mapboxAccessToken={process.env.mapbox_key}
-      {...viewState}
-      onMove={(evt) => setViewState(evt.viewState)}
+      {...viewport}
+      onMove={(evt): void => setViewport(evt.viewport)}
     >
-      {searchResults.map((result: any) => (
-        <div key={result.long}>
-          <Marker
-            longitude={result.long}
-            latitude={result.lat}
-            offsetLeft={-20}
-            offsetTop={-10}
-          >
-            <p
-              role="img"
-              onClick={() => setSelectedLocation(result)}
-              className="cursor-pointer text-2xl animate-bounce"
-              aria-label="push-pin"
+      {searchResults.map(
+        (result: {
+          img: string;
+          long: number;
+          lat: number;
+          title: string;
+          offsetLeft: number;
+          offsetTop: number;
+        }) => (
+          <div key={result.long}>
+            <Marker
+              longitude={Number(result.long)}
+              latitude={Number(result.lat)}
+              offsetLeft={-20}
+              offsetTop={-10}
             >
-              📍
-            </p>
-          </Marker>
-          {selectedLocation.long === result.long ? (
-            <Popup
-              onClose={() => setSelectedLocation({})}
-              closeOnClick={false}
-              latitude={result.lat}
-              longitude={result.long}
-            >
-              {result.title}
-            </Popup>
-          ) : (
-            false
-          )}
-        </div>
-      ))}
+              <p
+                role="img"
+                onClick={() => setSelectedLocation(result)}
+                className="cursor-pointer text-2xl animate-bounce"
+                aria-label="push-pin"
+              >
+                📍
+              </p>
+            </Marker>
+            {selectedLocation.long === result.long ? (
+              <Popup
+                className="text-xl"
+                onClose={() => setSelectedLocation({})}
+                closeOnClick={false}
+                latitude={Number(result.lat)}
+                longitude={Number(result.long)}
+              >
+                {result.title}
+                <img width="100%" src={result.img} alt="picture of home" />
+              </Popup>
+            ) : (
+              false
+            )}
+          </div>
+        )
+      )}
     </Map>
   );
 }
