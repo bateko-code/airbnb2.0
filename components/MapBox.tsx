@@ -5,12 +5,13 @@ import getCenter from "geolib/es/getCenter";
 function MapBox({ searchResults }: any) {
   const [selectedLocation, setSelectedLocation]: any = useState({});
   // Transform the search results object into the  lat long object required
-  const coordinates: any = searchResults.map(
+  const coordinates: any = searchResults?.map(
     (result: any): { longitude: number; latitude: number } => ({
       longitude: result.long,
       latitude: result.lat,
     })
   );
+
   const center = getCenter(coordinates);
   interface IViewport {
     width: string;
@@ -19,11 +20,12 @@ function MapBox({ searchResults }: any) {
     longitude: number;
     zoom: number;
   }
-  const [viewport, setViewport] = useState<IViewport>({
+  console.log(center);
+  const [viewport, setViewport] = React.useState<IViewport>({
     width: "100%",
     height: "100%",
-    latitude: center.latitude,
-    longitude: center.longitude,
+    latitude: center?.latitude,
+    longitude: center?.longitude,
     zoom: 11,
   });
 
@@ -31,8 +33,8 @@ function MapBox({ searchResults }: any) {
     setViewport({
       width: "100%",
       height: "100%",
-      latitude: center.latitude,
-      longitude: center.longitude,
+      latitude: center?.latitude,
+      longitude: center?.longitude,
       zoom: 11,
     });
   }, [searchResults]);
