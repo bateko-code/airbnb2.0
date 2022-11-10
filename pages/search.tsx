@@ -9,8 +9,11 @@ import MapBox from "../components/MapBox";
 const Search = ({ searchResults, searchLocation }: any) => {
   const router = useRouter();
   const { location, startDate, endDate, numberOfGuest } = router.query;
-  const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
-  const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
+  const formattedStartDate = format(
+    new Date(startDate as string),
+    "dd MMMM yy"
+  );
+  const formattedEndDate = format(new Date(endDate as string), "dd MMMM yy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
   return (
     <div>
