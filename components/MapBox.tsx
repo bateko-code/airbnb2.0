@@ -24,8 +24,8 @@ function MapBox({ searchResults }: any) {
   const [viewport, setViewport]: any = useState<IViewport>({
     width: "100%",
     height: "100%",
-    latitude: center.latitude,
-    longitude: center.longitude,
+    latitude: center?.latitude || 0.0,
+    longitude: center?.longitude || 0.0,
     zoom: 11,
   });
 
@@ -33,8 +33,8 @@ function MapBox({ searchResults }: any) {
     setViewport({
       width: "100%",
       height: "100%",
-      latitude: center?.latitude,
-      longitude: center?.longitude,
+      latitude: center?.latitude || 0.0,
+      longitude: center?.longitude || 0.0,
       zoom: 11,
     });
   }, [searchResults]);
