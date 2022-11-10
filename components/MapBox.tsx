@@ -11,8 +11,9 @@ function MapBox({ searchResults }: any) {
       latitude: result.lat,
     })
   );
+  // The latitude and longitude of the center of locations coordinates
 
-  const center = getCenter(coordinates);
+  const center: any = getCenter(coordinates);
   interface IViewport {
     width: string;
     height: string;
@@ -20,12 +21,11 @@ function MapBox({ searchResults }: any) {
     longitude: number;
     zoom: number;
   }
-  console.log(center);
-  const [viewport, setViewport] = React.useState<IViewport>({
+  const [viewport, setViewport]: any = useState<IViewport>({
     width: "100%",
     height: "100%",
-    latitude: center?.latitude,
-    longitude: center?.longitude,
+    latitude: center.latitude,
+    longitude: center.longitude,
     zoom: 11,
   });
 
@@ -43,24 +43,12 @@ function MapBox({ searchResults }: any) {
       mapStyle="mapbox://styles/tekocode4/cla3lpk4u003v15nxnkjzy93r"
       mapboxAccessToken={process.env.mapbox_key}
       {...viewport}
-      onMove={(evt): void => setViewport(evt.viewport)}
+      onMove={(evt: any) => setViewport(evt.Viewport)}
     >
       {searchResults.map(
-        (result: {
-          img: string;
-          long: number;
-          lat: number;
-          title: string;
-          offsetLeft: number;
-          offsetTop: number;
-        }) => (
+        (result: { img: string; long: number; lat: number; title: string }) => (
           <div key={result.long}>
-            <Marker
-              longitude={Number(result.long)}
-              latitude={Number(result.lat)}
-              offsetLeft={-20}
-              offsetTop={-10}
-            >
+            <Marker longitude={result.long} latitude={result.lat}>
               <p
                 role="img"
                 onClick={() => setSelectedLocation(result)}
@@ -75,8 +63,8 @@ function MapBox({ searchResults }: any) {
                 className="text-xl"
                 onClose={() => setSelectedLocation({})}
                 closeOnClick={false}
-                latitude={Number(result.lat)}
-                longitude={Number(result.long)}
+                latitude={result.lat}
+                longitude={result.long}
               >
                 {result.title}
                 <img width="100%" src={result.img} alt="picture of home" />
